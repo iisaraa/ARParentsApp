@@ -11,7 +11,8 @@ import 'app/pages/profile_page.dart';
 import 'app/pages/reports_page.dart';
 import 'app/pages/settings_page.dart';
 import 'app/pages/welcome_page.dart';
-import 'core/themes/app_theme.dart';
+import 'core/themes/dark_theme.dart';
+import 'core/themes/light_theme.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -37,9 +38,9 @@ class _AppState extends State<App> {
             locale: appProvider.locale,
             supportedLocales: const [Locale('en'), Locale('ar')],
             localizationsDelegates: context.localizationDelegates,
-            theme: AppTheme.getLightTheme(),
-            darkTheme: AppTheme.getDarkTheme(),
-            themeMode: appProvider.themeMode,
+            theme: LightTheme.theme,
+            darkTheme: DarkTheme.theme,
+            themeMode: appProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
             home: const AuthGate(),
             routes: {
               '/profile': (context) => const ProfilePage(),

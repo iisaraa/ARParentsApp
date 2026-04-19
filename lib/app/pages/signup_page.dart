@@ -19,6 +19,9 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   bool _isLoading = false;
   bool _redirecting = false;
+  late final isDark = Theme
+      .of(context)
+      .brightness == Brightness.dark;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -80,8 +83,8 @@ class _SignupPageState extends State<SignupPage> {
 
       print('✅ Parent data inserted successfully');
 
-      _showSnackBar('account_created_successfully'.tr(), AppColors.successLight);
-
+      _showSnackBar(
+          'account_created_successfully'.tr(), AppColors.successLight);
     } on AuthException catch (error) {
       print('❌ Auth error: ${error.message}');
       _showSnackBar(error.message, AppColors.errorLight);
@@ -147,8 +150,6 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
@@ -331,7 +332,8 @@ class _SignupPageState extends State<SignupPage> {
                                 onPressed: _isLoading ? null : _signup,
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  foregroundColor: isDark ? AppColors.primaryDark : AppColors.primaryLight,
+                                  foregroundColor: isDark ? AppColors
+                                      .primaryDark : AppColors.primaryLight,
                                   elevation: 5,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
@@ -343,7 +345,9 @@ class _SignupPageState extends State<SignupPage> {
                                   width: 20,
                                   child: CircularProgressIndicator(
                                     strokeWidth: 2,
-                                    color: isDark ? AppColors.primaryDark : AppColors.primaryLight,
+                                    color: isDark
+                                        ? AppColors.primaryDark
+                                        : AppColors.primaryLight,
                                   ),
                                 )
                                     : Text(
@@ -351,7 +355,9 @@ class _SignupPageState extends State<SignupPage> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: isDark ? AppColors.primaryDark : AppColors.primaryLight,
+                                    color: isDark
+                                        ? AppColors.primaryDark
+                                        : AppColors.primaryLight,
                                   ),
                                 ),
                               ),

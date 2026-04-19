@@ -368,7 +368,7 @@ class SettingsPage extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                'no email app'.tr(),
+                'coming soon ...'.tr(),
                 style: AppTextStyles.bodySmall(isDark),
               ),
               backgroundColor: AppColors.warningDark,

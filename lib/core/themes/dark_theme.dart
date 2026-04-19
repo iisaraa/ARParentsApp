@@ -13,11 +13,12 @@ class DarkTheme {
         secondary: AppColors.secondaryDark,
         error: AppColors.errorDark,
         surface: AppColors.surfaceDark,
+        background: AppColors.backgroundDark,
+        onBackground: Colors.white,
+        onSurface: Colors.white,
       ),
-
-      // AppBar Theme
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.backgroundDark,
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
@@ -28,8 +29,6 @@ class DarkTheme {
           fontFamily: 'BerkshireSwash',
         ),
       ),
-
-      // Text Theme
       textTheme: TextTheme(
         displayLarge: AppTextStyles.headerLarge(true),
         displayMedium: AppTextStyles.headerMedium(true),
@@ -40,13 +39,11 @@ class DarkTheme {
         labelLarge: AppTextStyles.labelLarge(true),
         labelMedium: AppTextStyles.labelMedium(true),
       ),
-
-      // Button Theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryDark,
           foregroundColor: Colors.white,
-          elevation: 2,
+          elevation: 4,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -57,8 +54,6 @@ class DarkTheme {
           ),
         ),
       ),
-
-      // Text Button Theme
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: AppColors.primaryDark,
@@ -68,8 +63,6 @@ class DarkTheme {
           ),
         ),
       ),
-
-      // Input Decoration Theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.surfaceDark,
@@ -79,7 +72,7 @@ class DarkTheme {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.grey.shade700),
+          borderSide: BorderSide(color: AppColors.borderDark),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -92,39 +85,48 @@ class DarkTheme {
         labelStyle: const TextStyle(color: AppColors.textSecondaryDark),
         hintStyle: const TextStyle(color: AppColors.textSecondaryDark),
       ),
-
-      // Card Theme
       cardTheme: CardThemeData(
-        elevation: 4,
+        elevation: 6,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
         color: AppColors.surfaceDark,
+        shadowColor: Colors.black.withOpacity(0.5),
+        surfaceTintColor: Colors.transparent,
       ),
-
-      // Divider Theme
       dividerTheme: const DividerThemeData(
         color: Colors.grey,
         thickness: 0.5,
         space: 1,
       ),
-
-      // Dialog Theme
       dialogTheme: DialogThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        elevation: 8,
+        elevation: 12,
+        backgroundColor: AppColors.surfaceDark,
       ),
-
-      // SnackBar Theme
       snackBarTheme: const SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
       ),
-
+      bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        modalElevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.surfaceDark,
+        elevation: 0,
+        indicatorColor: AppColors.primaryDark.withOpacity(0.3),
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+      ),
       useMaterial3: true,
     );
   }

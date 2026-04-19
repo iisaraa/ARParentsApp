@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'app_colors.dart';
 
 class AppGradients {
   // Light Mode Gradient
@@ -16,11 +17,7 @@ class AppGradients {
   static const LinearGradient primaryGradientDark = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [
-      Color(0xFF5B4B85),
-      Color(0xFF6893C2),
-      Color(0xFF5C8EAF),
-    ],
+    colors: AppColors.darkGradientColors,
   );
 
   // Glass Container Gradient
@@ -30,10 +27,10 @@ class AppGradients {
       end: Alignment.bottomRight,
       colors: [
         isDark
-            ? Colors.white.withOpacity(0.15)
+            ? Colors.white.withOpacity(0.1)
             : Colors.white.withOpacity(0.25),
         isDark
-            ? Colors.white.withOpacity(0.05)
+            ? Colors.white.withOpacity(0.03)
             : Colors.white.withOpacity(0.1),
       ],
     );
@@ -45,9 +42,9 @@ class AppGradients {
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: isDark ? [
-        const Color(0xFF4B3B75),
-        const Color(0xFF5B4B85),
-        const Color(0xFF6893C2),
+        const Color(0xFF3A2B5D),
+        const Color(0xFF4A3A6B),
+        const Color(0xFF5078A8),
       ] : [
         const Color(0xFF6B5B95),
         const Color(0xFF88B3E2),
@@ -63,13 +60,13 @@ class AppGradients {
       borderRadius: BorderRadius.circular(45),
       border: Border.all(
         color: isDark
-            ? Colors.white.withOpacity(0.2)
+            ? Colors.white.withOpacity(0.15)
             : Colors.white.withOpacity(0.3),
         width: 1.5,
       ),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black.withOpacity(0.2),
           blurRadius: 20,
           offset: const Offset(0, 10),
         ),
@@ -84,10 +81,10 @@ class AppGradients {
       end: Alignment.bottomRight,
       colors: [
         isDark
-            ? Colors.white.withOpacity(0.1)
+            ? Colors.white.withOpacity(0.08)
             : Colors.white.withOpacity(0.2),
         isDark
-            ? Colors.white.withOpacity(0.05)
+            ? Colors.white.withOpacity(0.03)
             : Colors.white.withOpacity(0.1),
       ],
     );

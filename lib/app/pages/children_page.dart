@@ -48,6 +48,7 @@ class _ChildrenPageState extends State<ChildrenPage> {
   @override
   Widget build(BuildContext context) {
     final childProvider = Provider.of<ChildProvider>(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       backgroundColor: Colors.transparent,

@@ -83,7 +83,8 @@
   "please_confirm_password": "يرجى تأكيد كلمة المرور",
   "please_enter_age": "يرجى إدخال العمر",
   "age_range": "العمر يجب أن يكون بين 1 و 18 سنة",
-  "No data Found": "لا توجد بيانات لعرضها",
+  "add children to view reports": "أضف أطفالاً لمشاهدة التقارير",
+  "No data found": "لا توجد بيانات لعرضها",
   "Year": "سنة",
   "Years": "سنوات",
   "Age": "العمر",
@@ -96,6 +97,13 @@
   "Children number": "عدد الأطفال",
   "no Children ": "لا يوجد أطفال",
   "No children yet": "لا يوجد أطفال بعد",
+  "are_you_sure_delete": "هل أنت متأكد من الحذف؟",
+  "delete_child":"حذف الطفل",
+  "coming soon ...": "قريبُا ...",
+  "share feature coming soon":"ميزة المشاركة قريبًا",
+  "tap_add_child": "انقر لإضافة طفل",
   "are_you_sure_logout": "هل أنت متأكد من تسجيل الخروج؟",
-  "Add children to view reports": "أضف أطفالاً لعرض التقارير"
+  "Add children to view reports": "أضف أطفالاً لعرض التقارير",
+  "child_already_exists": "يوجد طفل بنفس اسم المستخدم بالفعل",
+  "child_name_already_exists": "اسم الطفل هذا موجود بالفعل. الرجاء اختيار اسم آخر"
 }

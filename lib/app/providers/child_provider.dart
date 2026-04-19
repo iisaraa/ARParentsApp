@@ -14,7 +14,6 @@ class ChildProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
 
-  // ✅ تحميل الأطفال (مع caching)
   Future<void> loadChildren(String parentId, {bool forceRefresh = false}) async {
     if (_isLoaded && !forceRefresh) return;
 
@@ -41,7 +40,22 @@ class ChildProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ✅ إضافة طفل
+  Future<bool> checkChildExists(String parentId, String username) async {
+    try {
+      final response = await _supabase
+          .from('child')
+          .select()
+          .eq('parent_id', parentId)
+          .eq('username', username)
+          .maybeSingle();
+
+      return response != null;
+    } catch (e) {
+      debugPrint('Error checking child existence: $e');
+      return false;
+    }
+  }
+
   Future<bool> addChild({
     required String parentId,
     required String username,
@@ -54,6 +68,14 @@ class ChildProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
+      final exists = await checkChildExists(parentId, username);
+      if (exists) {
+        _errorMessage = 'Child with this username already exists';
+        _isLoading = false;
+        notifyListeners();
+        return false;
+      }
+
       final childData = {
         'parent_id': parentId,
         'username': username,
@@ -67,7 +89,6 @@ class ChildProvider extends ChangeNotifier {
           .insert(childData)
           .select();
 
-      // ✅ أضف الطفل مباشرة بدون إعادة تحميل
       final newChild = Child.fromJson(response[0]);
       _children.add(newChild);
 
@@ -75,7 +96,7 @@ class ChildProvider extends ChangeNotifier {
 
       return true;
     } catch (e) {
-      debugPrint('❌ Error adding child: $e');
+      debugPrint('Error adding child: $e');
       _errorMessage = e.toString();
       return false;
     } finally {
@@ -84,7 +105,6 @@ class ChildProvider extends ChangeNotifier {
     }
   }
 
-  // ✅ حذف طفل
   Future<bool> deleteChild(String childId) async {
     try {
       await _supabase
@@ -102,8 +122,9 @@ class ChildProvider extends ChangeNotifier {
     }
   }
 
-  // ✅ إعادة ضبط الكاش
   void reset() {
     _isLoaded = false;
+    _children = [];
+    _errorMessage = null;
   }
 }

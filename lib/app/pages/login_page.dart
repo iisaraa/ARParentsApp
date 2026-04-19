@@ -20,10 +20,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isLoading = false;
   bool _redirecting = false;
+  late final isDark = Theme.of(context).brightness == Brightness.dark;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
   late final StreamSubscription<AuthState> _authStateSubscription;
 
   Future<void> _login() async {
@@ -116,8 +116,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(

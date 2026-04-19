@@ -84,12 +84,6 @@ class ChildCard extends StatelessWidget {
                       Icon(Icons.delete, color: Colors.red),
                       SizedBox(width: 8),
                       Text('Delete'.tr(), style: TextStyle(color: Colors.white)),
-                      Icon(Icons.edit,color: Colors.white,
-                      ),
-                      SizedBox(width: 8),
-                      Text('Edit'.tr(),style: TextStyle(color: Colors.white)),
-
-
                     ],
                   ),
                 ),

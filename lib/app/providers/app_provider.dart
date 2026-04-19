@@ -10,6 +10,7 @@ class AppProvider extends ChangeNotifier {
 
   ThemeMode get themeMode => _themeMode;
   Locale get locale => _locale;
+  bool get isDarkMode => _themeMode == ThemeMode.dark;
 
   AppProvider() {
     _loadPreferences();
@@ -18,13 +19,11 @@ class AppProvider extends ChangeNotifier {
   Future<void> _loadPreferences() async {
     final prefs = await SharedPreferences.getInstance();
 
-    // تحميل الثيم
     final savedTheme = prefs.getString('theme_mode');
     if (savedTheme != null) {
       _themeMode = savedTheme == 'dark' ? ThemeMode.dark : ThemeMode.light;
     }
 
-    // تحميل اللغة
     final savedLanguage = prefs.getString('language_code');
     if (savedLanguage != null) {
       _locale = Locale(savedLanguage);
@@ -39,9 +38,18 @@ class AppProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setDarkMode(bool value) {
+    _themeMode = value ? ThemeMode.dark : ThemeMode.light;
+    _saveThemePreference();
+    notifyListeners();
+  }
+
   Future<void> changeLanguage(Locale locale, BuildContext context) async {
     if (_isRestarting) return;
     _isRestarting = true;
+
+    _locale = locale;
+    notifyListeners();
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('language_code', locale.languageCode);

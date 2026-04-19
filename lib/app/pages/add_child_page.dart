@@ -67,7 +67,7 @@ class _AddChildPageState extends State<AddChildPage> {
         throw Exception('no_parent_id_found'.tr());
       }
 
-      print('✅ Using parent ID: $effectiveParentId');
+      print('Using parent ID: $effectiveParentId');
 
       final success = await childProvider.addChild(
         parentId: effectiveParentId,
@@ -85,16 +85,16 @@ class _AddChildPageState extends State<AddChildPage> {
           ),
         );
         Navigator.pop(context, true);
-      } else if (mounted) {
+      } else if (mounted && childProvider.errorMessage != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(childProvider.errorMessage ?? 'failed_to_add_child'.tr()),
+            content: Text(childProvider.errorMessage!),
             backgroundColor: AppColors.errorLight,
           ),
         );
       }
     } catch (e) {
-      print('❌ Error: $e');
+      print('Error: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -137,7 +137,6 @@ class _AddChildPageState extends State<AddChildPage> {
         ),
         child: Stack(
           children: [
-            // Glass overlay effect
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
@@ -152,7 +151,6 @@ class _AddChildPageState extends State<AddChildPage> {
                 ),
               ),
             ),
-            // Main content
             SafeArea(
               child: Center(
                 child: SingleChildScrollView(
@@ -185,7 +183,6 @@ class _AddChildPageState extends State<AddChildPage> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              // Icon
                               Container(
                                 width: 80,
                                 height: 80,
@@ -209,11 +206,11 @@ class _AddChildPageState extends State<AddChildPage> {
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              // Title
                               Text(
                                 'add_new_child'.tr(),
                                 style: AppTextStyles.headerMedium(isDark).copyWith(
                                   fontSize: 28,
+                                  fontFamily: 'BerkshireSwash',
                                   color: Colors.white,
                                 ),
                               ),
@@ -226,7 +223,6 @@ class _AddChildPageState extends State<AddChildPage> {
                                 ),
                               ),
                               const SizedBox(height: 32),
-                              // Username Field
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.15),
@@ -266,7 +262,6 @@ class _AddChildPageState extends State<AddChildPage> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              // Password Field
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.15),
@@ -320,7 +315,6 @@ class _AddChildPageState extends State<AddChildPage> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              // Confirm Password Field
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.15),
@@ -372,7 +366,6 @@ class _AddChildPageState extends State<AddChildPage> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              // Age Field
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.15),
@@ -414,7 +407,6 @@ class _AddChildPageState extends State<AddChildPage> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              // Gender Dropdown
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.15),
@@ -444,13 +436,13 @@ class _AddChildPageState extends State<AddChildPage> {
                                     ),
                                   ),
                                   items: [
-                                     DropdownMenuItem(
+                                    DropdownMenuItem(
                                       value: 'Male',
-                                      child: Text('male'.tr()),
+                                      child: Text('Male'.tr()),
                                     ),
                                     DropdownMenuItem(
                                       value: 'Female',
-                                      child: Text('female'.tr()),
+                                      child: Text('Female'.tr()),
                                     ),
                                   ],
                                   onChanged: (value) {
@@ -461,7 +453,6 @@ class _AddChildPageState extends State<AddChildPage> {
                                 ),
                               ),
                               const SizedBox(height: 32),
-                              // Add Button
                               SizedBox(
                                 width: double.infinity,
                                 height: 55,

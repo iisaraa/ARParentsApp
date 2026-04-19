@@ -30,11 +30,9 @@ class LanguageProvider extends ChangeNotifier {
     _locale = locale;
 
     try {
-      // حفظ اللغة
+
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('language_code', locale.languageCode);
-
-      // تغيير اللغة في easy_localization
       await context.setLocale(locale);
 
       notifyListeners();
